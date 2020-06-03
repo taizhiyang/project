@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>081417154邰志洋</title>
+    <link rel="short icon" href="Resource/icon.png" >
+    <link rel="stylesheet" href="ExternalStyle.css">
+    <style>
+        article{
+            margin: 20px;
+        }
+        h3{
+            color: red;
+            font-size: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dddddd;
+        }
+        h4{
+            font-size: 14px;
+        }
+        p{
+            text-indent: 2em;
+            line-height: 2em;
+            font-size: 12px;
+        }
+
+    </style>
+    <script src="utils.js"></script>
+</head>
+<body>
+    <header>
+        <span>平台风采</span>
+    </header>
+
+    <section class="DS_second_section">
+        <img src="Resource/banner4.png" rel="轮播图">
+    </section>
+
+    <article>
+        <h3 id="title"></h3>
+        <h4 id="subTitle"></h4>
+        <p id="info"></p>
+    </article>
+
+    <footer>
+        <a href="DropletService.html"> <img src="Resource/nav10.png" alt=""> <span >小滴服务</span></a>
+        <a href="BusinessProject.html"> <img src="Resource/nav20.png" alt=""> <span>企业项目</span></a>
+        <a href="ServiceProcess.html"> <img src="Resource/nav30.png" alt=""> <span>服务流程</span></a>
+        <a href=""> <img src="Resource/nav41.png" alt=""> <span style="color: red;">平台风采</span></a>
+        <a href="MyDroplet.html"> <img src="Resource/nav50.png" alt=""> <span>我的小滴</span></a>
+    </footer>
+</body>
+<script>
+    function assign(obj) {
+        var title_tag=document.getElementById("title");
+        var subTitle_tag=document.getElementById("subTitle");
+        var info_tag=document.getElementById("info");
+        title_tag.innerHTML=obj.title;
+        subTitle_tag.innerHTML=obj.subTitle;
+        info_tag.innerHTML=obj.info;
+    }
+    var obj1=JSON.parse(localStorage.getItem("plaform_json"));
+    if(obj1){
+        var str=obj1.data;
+        assign(str);
+    }else{
+        var b='https://mockapi.eolinker.com/2ZhGVxjacb39010e6753bd9c02ee803e6e3bfeab6e8007c/aboutus';
+        var str=httpreplace('get',"",b,function (obj,obj1) {
+            assign(obj);
+            window.localStorage.setItem("plaform_json",obj1);
+        });
+    }
+
+</script>
+</html>
+
